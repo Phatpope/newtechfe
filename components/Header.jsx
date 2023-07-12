@@ -132,7 +132,10 @@ const Header = () => {
             </Wrapper>
 
         </header>
+        <Wrapper>
         {searchModal && <Search setSearchModal={setSearchModal} />}
+
+        </Wrapper>
         </>
 
 

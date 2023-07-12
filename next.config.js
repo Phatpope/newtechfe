@@ -5,7 +5,7 @@ const nextConfig = {
         ignoreDuringBuilds: true,
     },
     images: {
-        domains: ["res.cloudinary.com"],
+        domains: ['digital-ocean-strapi-techservice.sgp1.digitaloceanspaces.com'],
     },
 };
 
