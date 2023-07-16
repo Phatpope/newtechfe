@@ -73,7 +73,7 @@ const Search = ({ setSearchModal }) => {
               }}
             >
               <div className="flex-shrink-0">
-                <div className="text-sm font-medium text-gray-900">
+                <div className="text-sm font-tektur text-gray-900">
                   {item?.attributes?.subtitle}
                 </div>
                 <div className="text-sm text-gray-500">

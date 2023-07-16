@@ -109,10 +109,10 @@ const Cart = () => {
 
                 <div className="p-5 my-5 bg-black/[0.05] rounded-xl">
                   <div className="flex justify-between">
-                    <div className="uppercase text-md md:text-lg font-medium text-black">
+                    <div className="uppercase text-md md:text-lg font-tektur text-black">
                       Subtotal
                     </div>
-                    <div className="text-md md:text-lg font-medium text-black">
+                    <div className="text-md md:text-lg font-tektur text-black">
                       &#8377;{subTotal}
                     </div>
                   </div>
@@ -126,7 +126,7 @@ const Cart = () => {
 
                 {/* BUTTON START */}
                 <button
-                  className="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75 flex items-center gap-2 justify-center"
+                  className="w-full py-4 rounded-full bg-black text-white text-lg font-tektur transition-transform active:scale-95 mb-3 hover:opacity-75 flex items-center gap-2 justify-center"
                   onClick={handlePayment}
                 >
                   Checkout
@@ -134,7 +134,7 @@ const Cart = () => {
                 </button>
 
                 <button
-                  className="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75 flex items-center gap-2 justify-center"
+                  className="w-full py-4 rounded-full bg-black text-white text-lg font-tektur transition-transform active:scale-95 mb-3 hover:opacity-75 flex items-center gap-2 justify-center"
                   onClick={handleBuyOffline}
                 >
                   Buy Offline
@@ -204,7 +204,7 @@ const Cart = () => {
               </div>
               <button
                 type="submit"
-                className="py-4 px-8 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75"
+                className="py-4 px-8 rounded-full bg-black text-white text-lg font-tektur transition-transform active:scale-95 mb-3 hover:opacity-75"
               >
                 Submit
               </button>
@@ -228,7 +228,7 @@ const Cart = () => {
             </span>
             <Link
               href="/"
-              className="py-4 px-8 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75 mt-8"
+              className="py-4 px-8 rounded-full bg-black text-white text-lg font-tektur transition-transform active:scale-95 mb-3 hover:opacity-75 mt-8"
             >
               Continue Shopping
             </Link>

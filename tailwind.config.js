@@ -12,6 +12,9 @@ module.exports = {
         fontFamily: {
             oswald: "Oswald, sans-serif",
             urbanist: "Urbanist, sans-serif",
+            montserrat: ['Montserrat'],
+            tektur:['Tektur'],
+
         },
         extend: {},
     },

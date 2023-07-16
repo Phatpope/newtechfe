@@ -25,7 +25,7 @@ export default function AllproductsPage({ products }) {
               <div class="fixed inset-0 z-40 flex">
                 <div class="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
                   <div class="flex items-center justify-between px-4">
-                    <h2 class="text-lg font-medium text-gray-900">Filters</h2>
+                    <h2 class="text-lg font-tektur text-gray-900">Filters</h2>
                     <button
                       type="button"
                       class="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400"
@@ -50,7 +50,7 @@ export default function AllproductsPage({ products }) {
 
                   <form class="mt-4 border-t border-gray-200">
                     <h3 class="sr-only">Categories</h3>
-                    <ul role="list" class="px-2 py-3 font-medium text-gray-900">
+                    <ul role="list" class="px-2 py-3 font-tektur text-gray-900">
                       <li>
                         <a href="#" class="block px-2 py-3">
                           Totes
@@ -86,7 +86,7 @@ export default function AllproductsPage({ products }) {
                           aria-controls="filter-section-mobile-0"
                           aria-expanded="false"
                         >
-                          <span class="font-medium text-gray-900">Color</span>
+                          <span class="font-tektur text-gray-900">Color</span>
                           <span class="ml-6 flex items-center">
                             <svg
                               class="h-5 w-5"
@@ -226,7 +226,7 @@ export default function AllproductsPage({ products }) {
                           aria-controls="filter-section-mobile-1"
                           aria-expanded="false"
                         >
-                          <span class="font-medium text-gray-900">
+                          <span class="font-tektur text-gray-900">
                             Category
                           </span>
                           <span class="ml-6 flex items-center">
@@ -342,7 +342,7 @@ export default function AllproductsPage({ products }) {
                           aria-controls="filter-section-mobile-2"
                           aria-expanded="false"
                         >
-                          <span class="font-medium text-gray-900">Size</span>
+                          <span class="font-tektur text-gray-900">Size</span>
                           <span class="ml-6 flex items-center">
                             <svg
                               class="h-5 w-5"
@@ -480,7 +480,7 @@ export default function AllproductsPage({ products }) {
                     <div>
                       <button
                         type="button"
-                        class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900"
+                        class="group inline-flex justify-center text-sm font-tektur text-gray-700 hover:text-gray-900"
                         id="menu-button"
                         aria-expanded="false"
                         aria-haspopup="true"
@@ -511,7 +511,7 @@ export default function AllproductsPage({ products }) {
                       <div class="py-1" role="none">
                         <a
                           href="#"
-                          class="font-medium text-gray-900 block px-4 py-2 text-sm"
+                          class="font-tektur text-gray-900 block px-4 py-2 text-sm"
                           role="menuitem"
                           tabindex="-1"
                           id="menu-item-0"
@@ -607,7 +607,7 @@ export default function AllproductsPage({ products }) {
                     <h3 class="sr-only">Categories</h3>
                     <ul
                       role="list"
-                      class="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
+                      class="space-y-4 border-b border-gray-200 pb-6 text-sm font-tektur text-gray-900"
                     >
                       <li>
                         <a href="#">Totes</a>
@@ -635,7 +635,7 @@ export default function AllproductsPage({ products }) {
                           aria-controls="filter-section-0"
                           aria-expanded="false"
                         >
-                          <span class="font-medium text-gray-900">Color</span>
+                          <span class="font-tektur text-gray-900">Color</span>
                           <span class="ml-6 flex items-center">
                             <svg
                               class="h-5 w-5"
@@ -764,7 +764,7 @@ export default function AllproductsPage({ products }) {
                           aria-controls="filter-section-1"
                           aria-expanded="false"
                         >
-                          <span class="font-medium text-gray-900">
+                          <span class="font-tektur text-gray-900">
                             Category
                           </span>
                           <span class="ml-6 flex items-center">
@@ -880,7 +880,7 @@ export default function AllproductsPage({ products }) {
                           aria-controls="filter-section-0"
                           aria-expanded="false"
                         >
-                          <span class="font-medium text-gray-900">Filter By Price</span>
+                          <span class="font-tektur text-gray-900">Filter By Price</span>
                           <span class="ml-6 flex items-center">
                             <svg
                               class="h-5 w-5"
@@ -927,7 +927,7 @@ export default function AllproductsPage({ products }) {
                           aria-controls="filter-section-2"
                           aria-expanded="false"
                         >
-                          <span class="font-medium text-gray-900">Size</span>
+                          <span class="font-tektur text-gray-900">Size</span>
                           <span class="ml-6 flex items-center">
                             <svg
                               class="h-5 w-5"

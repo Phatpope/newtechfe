@@ -18,12 +18,12 @@ const RelatedPost = ({
         <h5>
           <Link
             href={slug}
-            className="mb-[6px] block text-base font-medium leading-snug text-black hover:text-primary dark:text-white dark:hover:text-primary"
+            className="mb-[6px] block text-base font-tektur leading-snug text-black hover:text-primary dark:text-white dark:hover:text-primary"
           >
             {title}
           </Link>
         </h5>
-        <p className="text-xs font-medium text-body-color">{date}</p>
+        <p className="text-xs font-tektur text-body-color">{date}</p>
       </div>
     </div>
   );

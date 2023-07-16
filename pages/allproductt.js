@@ -113,7 +113,7 @@ const AllProduct = ({ category, products }) => {
       <Sort />
       <FilteredProductsContext.Provider value={filteredProducts}>
         <div className="flex flex-wrap">
-          <div className="w-1/4">
+          <div className="w-full md:w-1/4">
             <Filter
               categories={category}
               products={products}
@@ -122,7 +122,7 @@ const AllProduct = ({ category, products }) => {
               handlePriceFilter={handlePriceFilter}
             />
           </div>
-          <div className="w-3/4">
+          <div className="w-full md:w-3/4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-14 px-5 md:px-0">
               {filteredProducts.map((product) => (
                 <ProductCard key={product.id} data={product} />

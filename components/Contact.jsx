@@ -14,7 +14,7 @@ const Contact = () => {
               <h2 className="mb-3 text-2xl font-bold text-black dark:text-white sm:text-3xl lg:text-2xl xl:text-3xl">
                 Need Help? Open a Ticket
               </h2>
-              <p className="mb-12 text-base font-medium text-body-color">
+              <p className="mb-12 text-base font-tektur text-body-color">
                 Our support team will get back to you ASAP via email.
               </p>
               <form>
@@ -23,7 +23,7 @@ const Contact = () => {
                     <div className="mb-8">
                       <label
                         htmlFor="name"
-                        className="mb-3 block text-sm font-medium text-dark dark:text-white"
+                        className="mb-3 block text-sm font-tektur text-dark dark:text-white"
                       >
                         Your Name
                       </label>
@@ -38,7 +38,7 @@ const Contact = () => {
                     <div className="mb-8">
                       <label
                         htmlFor="email"
-                        className="mb-3 block text-sm font-medium text-dark dark:text-white"
+                        className="mb-3 block text-sm font-tektur text-dark dark:text-white"
                       >
                         Your Email
                       </label>
@@ -53,7 +53,7 @@ const Contact = () => {
                     <div className="mb-8">
                       <label
                         htmlFor="message"
-                        className="mb-3 block text-sm font-medium text-dark dark:text-white"
+                        className="mb-3 block text-sm font-tektur text-dark dark:text-white"
                       >
                         Your Message
                       </label>
@@ -66,7 +66,7 @@ const Contact = () => {
                     </div>
                   </div>
                   <div className="w-full px-4">
-                    <button className="rounded-md bg-primary py-4 px-9 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">
+                    <button className="rounded-md bg-primary py-4 px-9 text-base font-tektur text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">
                       Submit Ticket
                     </button>
                   </div>

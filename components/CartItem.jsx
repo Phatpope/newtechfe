@@ -38,7 +38,7 @@ const CartItem = ({ data }) => {
                     </div>
 
                     {/* PRODUCT SUBTITLE */}
-                    <div className="text-sm md:text-md font-medium text-black/[0.5] block md:hidden">
+                    <div className="text-sm md:text-md font-tektur text-black/[0.5] block md:hidden">
                         {p.subtitle}
                     </div>
 
@@ -49,7 +49,7 @@ const CartItem = ({ data }) => {
                 </div>
 
                 {/* PRODUCT SUBTITLE */}
-                <div className="text-md font-medium text-black/[0.5] hidden md:block">
+                <div className="text-md font-tektur text-black/[0.5] hidden md:block">
                     {p.subtitle}
                 </div>
 

@@ -42,7 +42,7 @@ const Navigation = ({ product }) => {
   
   const infoContent = (
     <div>
-      <div className="text-lg font-bold mb-5">Product Information:</div>
+      <div className="text-lg font-tektur mb-5">Product Information:</div>
       <div className="markdown text-md mb-5">
         <ReactMarkdown>{product.info}</ReactMarkdown>
       </div>
@@ -51,7 +51,8 @@ const Navigation = ({ product }) => {
 
   const videoContent = (
     <div>
-      <h2>Product Video</h2>
+      <div className="text-lg font-tektur mb-5">Product Video:</div>
+
       <iframe
         width="560"
         height="315"
@@ -91,13 +92,13 @@ const Navigation = ({ product }) => {
         {Menus.map((menu, i) => (
           <li key={i} className="w-30">
             <a
-              className="flex flex-col text-center p-5 cursor-pointer px-4"
+              className="flex flex-col text-center p-5 cursor-pointer px-4 font-tektur"
               onClick={() => setActive(i)}
             >
               <span
                 className={`${
                   active === i
-                    ? "duration-700 opacity-100 font-bold"
+                    ? "duration-700 opacity-100 font-tektur"
                     : "opacity-40"
                 }`}
               >

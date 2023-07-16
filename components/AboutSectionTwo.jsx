@@ -23,7 +23,7 @@ const AboutSectionTwo = () => {
                 <h3 className="mb-4 text-xl font-bold text-black dark:text-white sm:text-2xl lg:text-xl xl:text-2xl">
                   Cải thiện chất lượng cuộc sống
                 </h3>
-                <p className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed">
+                <p className="text-base font-tektur leading-relaxed text-body-color sm:text-lg sm:leading-relaxed">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
@@ -32,7 +32,7 @@ const AboutSectionTwo = () => {
                 <h3 className="mb-4 text-xl font-bold text-black dark:text-white sm:text-2xl lg:text-xl xl:text-2xl">
                   Premier support
                 </h3>
-                <p className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed">
+                <p className="text-base font-tektur leading-relaxed text-body-color sm:text-lg sm:leading-relaxed">
                 Cung cấp giải pháp và dịch vụ chuyên nghiệp được cá
                  nhân hóa theo từng nhu cầu khác nhau của khách hàng.
                 </p>
@@ -41,7 +41,7 @@ const AboutSectionTwo = () => {
                 <h3 className="mb-4 text-xl font-bold text-black dark:text-white sm:text-2xl lg:text-xl xl:text-2xl">
                   Gift & Sale
                 </h3>
-                <p className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed">
+                <p className="text-base font-tektur leading-relaxed text-body-color sm:text-lg sm:leading-relaxed">
                 Chương trình “thu cũ đổi mới” giúp khách hàng dễ dàng tiếp 
                 cận với công nghệ mới, chiếm được trái tim của khách hàng.
                 </p>
