@@ -179,21 +179,7 @@ export default ProductDetails;
 
 // ...
 
-export async function getStaticPaths() {
-  const products = await fetchDataFromApi("/api/products?populate=*");
-  const paths = products?.data?.map((p) => ({
-    params: {
-      slug: p?.attributes.slug,
-    },
-  }));
-
-  return {
-    paths,
-    fallback:false,
-  };
-}
-
-export async function getStaticProps({ params: { slug } }) {
+export async function getServerSideProps({ params: { slug } }) {
   const product = await fetchDataFromApi(
     `/api/products?populate=*&filters[slug][$eq]=${slug}`
   );
@@ -206,6 +192,6 @@ export async function getStaticProps({ params: { slug } }) {
       product,
       products,
     },
-    revalidate: 1, // Add revalidate option to enable incremental static regeneration
   };
 }
+
