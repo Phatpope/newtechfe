@@ -177,6 +177,8 @@ const ProductDetails = ({ product, products }) => {
 
 export default ProductDetails;
 
+// ...
+
 export async function getStaticPaths() {
   const products = await fetchDataFromApi("/api/products?populate=*");
   const paths = products?.data?.map((p) => ({
@@ -187,7 +189,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
+    fallback: true, // Change this to true
   };
 }
 
@@ -204,5 +206,6 @@ export async function getStaticProps({ params: { slug } }) {
       product,
       products,
     },
+    revalidate: 1, // Add revalidate option to enable incremental static regeneration
   };
 }
