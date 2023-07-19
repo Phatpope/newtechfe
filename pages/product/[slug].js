@@ -32,6 +32,9 @@ const ProductDetails = ({ product, products }) => {
       theme: "dark",
     });
   };
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
 
   if (!p) {
     return <div>Loading...</div>;
