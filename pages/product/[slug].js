@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
+
 import { IoMdHeartEmpty } from "react-icons/io";
 import Wrapper from "@/components/Wrapper";
 import ProductDetailsCarousel from "@/components/ProductDetailsCarousel";
@@ -15,6 +17,8 @@ import "react-toastify/dist/ReactToastify.css";
 import NewLetterCall from "@/components/NewlatterCall";
 
 const ProductDetails = ({ product, products }) => {
+  const router = useRouter();
+
   const [selectedSize, setSelectedSize] = useState();
   const [showError, setShowError] = useState(false);
   const dispatch = useDispatch();
