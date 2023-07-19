@@ -33,6 +33,10 @@ const ProductDetails = ({ product, products }) => {
     });
   };
 
+  if (!p) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="w-full md:py-20">
       <ToastContainer />
