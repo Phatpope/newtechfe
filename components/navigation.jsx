@@ -72,7 +72,7 @@ const Navigation = ({ product }) => {
         {Object.entries(productDetail).map(([key, value]) => (
           <><li key={key}>
             <strong>{formatKey(key)}: </strong>
-            {value}
+            {value != null ? value : 'N/A'}
           </li><tr>
               
           <hr className="border-t border-gray-300 my-4" />

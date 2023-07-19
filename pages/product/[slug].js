@@ -48,24 +48,24 @@ const ProductDetails = ({ product, products }) => {
           <div className="flex-[1] py-3">
             {/* PRODUCT TITLE */}
             <div className="text-[34px] font-semibold mb-2 leading-tight">
-              {p.name}
+              {p?.name}
             </div>
 
             {/* PRODUCT SUBTITLE */}
-            <div className="text-lg font-semibold mb-5">{p.subtitle}</div>
+            <div className="text-lg font-semibold mb-5">{p?.subtitle}</div>
 
             {/* PRODUCT PRICE */}
             <div className="flex items-center">
               <p className="mr-2 text-lg font-semibold">
-                Giá : {p.price} &#8363;
+                Giá : {p?.price} &#8363;
               </p>
-              {p.original_price && (
+              {p?.original_price && (
                 <>
                   <p className="text-base  font-montserrat line-through">
-                    {p.original_price} &#8363;
+                    {p?.original_price} &#8363;
                   </p>
                   <p className="ml-auto text-base font-montserrat text-green-500">
-                    {getDiscountedPricePercentage(p.original_price, p.price)}%
+                    {getDiscountedPricePercentage(p?.original_price, p?.price)}%
                     off
                   </p>
                 </>
@@ -136,7 +136,7 @@ const ProductDetails = ({ product, products }) => {
                     addToCart({
                       ...product?.data?.[0],
                       selectedSize,
-                      oneQuantityPrice: p.price,
+                      oneQuantityPrice: p?.price,
                     })
                   );
                   notify();
@@ -157,7 +157,7 @@ const ProductDetails = ({ product, products }) => {
             <div>
               <div className="text-lg font-bold mb-5">Product Details</div>
               <div className=" text-md mb-5 font-tektur ui-sans-serif">
-                {p.description}
+                {p?.description}
               </div>
               <NewLetterCall/>
             </div>
@@ -183,12 +183,13 @@ export async function getStaticPaths() {
   const products = await fetchDataFromApi("/api/products?populate=*");
   const paths = products?.data?.map((p) => ({
     params: {
-      slug: p.attributes.slug,
+      slug: p?.attributes.slug,
     },
   }));
 
   return {
     paths,
+    fallback:false,
   };
 }
 
