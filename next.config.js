@@ -7,7 +7,7 @@ const nextConfig = {
     images: {
         domains: ['digital-ocean-strapi-techservice.sgp1.digitaloceanspaces.com'],
     },
-    exportTrailingSlash: true,
+    TrailingSlash: true,
   exportPathMap: async function (defaultPathMap) {
     return defaultPathMap;
   },
