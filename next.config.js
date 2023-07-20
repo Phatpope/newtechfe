@@ -1,5 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    distDir: "_next",
+  generateBuildId: async () => {
+    if (process.env.BUILD_ID) {
+      return process.env.BUILD_ID;
+    } else {
+      return `${new Date().getTime()}`;
+    }
+  },
     reactStrictMode: true,
     eslint: {
         ignoreDuringBuilds: true,
@@ -11,7 +19,7 @@ const nextConfig = {
   exportPathMap: async function (defaultPathMap) {
     return defaultPathMap;
   },
-  fallback: true,
+
 };
 
 module.exports = nextConfig;
