@@ -205,21 +205,31 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const product = await fetchDataFromApi(
-    `/api/products?populate=*&filters[slug][$eq]=${slug}`
-  );
-  const products = await fetchDataFromApi(
-    `/api/products?populate=*&[filters][slug][$ne]=${slug}`
-  );
+  try {
+    const product = await fetchDataFromApi(
+      `/api/products?populate=*&filters[slug][$eq]=${slug}`
+    );
 
-  return {
-    props: {
-      product, // Nest 'product' and 'products' under 'props'
-      products,
-    },
-    revalidate: 10, // Add revalidate option to enable incremental static regeneration
-  };
+    // Add more data fetching logic if needed, e.g., related products
+    const products = await fetchDataFromApi(
+      `/api/products?populate=*&[filters][slug][$ne]=${slug}`
+    );
+
+    return {
+      props: {
+        product,
+        products,
+      },
+      revalidate: 10, // Add revalidate option to enable incremental static regeneration
+    };
+  } catch (error) {
+    console.error("Error fetching product:", error);
+    return {
+      notFound: true, // This will return a 404 page
+    };
+  }
 }
+
 
 
 
