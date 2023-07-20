@@ -254,9 +254,10 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: true, // Set fallback to 'true' or 'blocking' for dynamic generation
+    fallback: true, // Set fallback to true to enable SSR for new slugs
   };
 }
+
 
 export async function getStaticProps({ params }) {
   try {
