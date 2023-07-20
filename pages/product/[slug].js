@@ -186,27 +186,49 @@ const ProductDetails = ({ product, products }) => {
 
 
 // ...
+// export async function getStaticPaths() {
+//   try {
+//     const products = await fetchDataFromApi("/api/products?populate=*");
+//     console.log("Products Data:", products); // Add this console.log to check the data
+//     const paths = products?.data?.map((p) => ({
+//       params: {
+//         slug: p?.attributes.slug,
+//       },
+//     }));
+
+//     return {
+//       paths,
+//       fallback: true,
+//     };
+//   } catch (error) {
+//     console.error("Error fetching product slugs:", error);
+//     return {
+//       paths: [],
+//       fallback: true,
+//     };
+//   }
+// }
 export async function getStaticPaths() {
-  try {
-    const products = await fetchDataFromApi("/api/products?populate=*");
-    console.log("Products Data:", products); // Add this console.log to check the data
-    const paths = products?.data?.map((p) => ({
+  // When this is true (in preview environments) don't
+  // prerender any static pages
+  // (faster builds, but slower initial page load)
+  if (process.env.SKIP_BUILD_STATIC_GENERATION) {
+    return {
+      paths: [],
+      fallback: 'blocking',
+    }
+  }
+ 
+  // Call an external API endpoint to get posts
+  const products = await fetchDataFromApi("/api/products?populate=*");
+  const paths = products?.data?.map((p) => ({
       params: {
         slug: p?.attributes.slug,
       },
     }));
-
-    return {
-      paths,
-      fallback: true,
-    };
-  } catch (error) {
-    console.error("Error fetching product slugs:", error);
-    return {
-      paths: [],
-      fallback: true,
-    };
-  }
+ 
+  // { fallback: false } means other routes should 404
+  return { paths, fallback: false }
 }
 
 export async function getStaticProps({ params: { slug } }) {
