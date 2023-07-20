@@ -217,6 +217,7 @@ export async function getStaticProps({ params: { slug } }) {
       product,
       products,
     },
+    fallback: true,
     revalidate: 10, // Add revalidate option to enable incremental static regeneration
   };
 }
