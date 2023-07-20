@@ -19,7 +19,7 @@ const Products = ({category}) => {
 export default Products;
 
 export async function getServerSideProps() {
-  const category = await fetchDataFromApi("/api/categories?populate=*");
+  const category = await fetchDataFromApi("/api/categoriessssss?populate=*");
   
 
   return {
