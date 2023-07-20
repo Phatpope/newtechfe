@@ -191,18 +191,28 @@ export default ProductDetails;
 // ...
 
 export async function getStaticPaths() {
-  const products = await fetchDataFromApi("/api/products?populate=*");
-  const paths = products?.data?.map((p) => ({
-    params: {
-      slug: p?.attributes.slug,
-    },
-  }));
+  try {
+    const products = await fetchDataFromApi("/api/products?populate=*");
+    const paths = products?.data?.map((p) => ({
+      params: {
+        slug: p?.attributes.slug,
+      },
+    }));
 
-  return {
-    paths,
-    fallback: true,
-  };
+    return {
+      paths,
+      fallback: 'blocking',
+    };
+  } catch (error) {
+    console.error("Error fetching product paths asdnaslkdnlknasln:", error);
+    return {
+      paths: [], // Return an empty array in case of an error
+      fallback: 'blocking',
+    };
+  }
 }
+
+
 
 export async function getStaticProps({ params: { slug } }) {
   try {
