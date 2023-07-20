@@ -214,13 +214,13 @@ export async function getStaticProps({ params: { slug } }) {
 
   return {
     props: {
-      product,
+      product, // Nest 'product' and 'products' under 'props'
       products,
     },
-    fallback: true,
     revalidate: 10, // Add revalidate option to enable incremental static regeneration
   };
 }
+
 
 
 
