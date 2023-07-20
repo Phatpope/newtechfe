@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useRouter } from "next/router";
-
 import { IoMdHeartEmpty } from "react-icons/io";
 import Wrapper from "@/components/Wrapper";
 import ProductDetailsCarousel from "@/components/ProductDetailsCarousel";
@@ -17,8 +15,6 @@ import "react-toastify/dist/ReactToastify.css";
 import NewLetterCall from "@/components/NewlatterCall";
 
 const ProductDetails = ({ product, products }) => {
-  const router = useRouter();
-
   const [selectedSize, setSelectedSize] = useState();
   const [showError, setShowError] = useState(false);
   const dispatch = useDispatch();
@@ -36,12 +32,14 @@ const ProductDetails = ({ product, products }) => {
       theme: "dark",
     });
   };
-  if (router.isFallback) {
-    return <div>Loading...</div>;
+
+  if (!product) {
+    return <div>Loading...</div>; // Add a loading state
   }
 
+  // Add error handling for product not found
   if (!p) {
-    return <div>Loading...</div>;
+    return <div>Product not found.</div>;
   }
 
   return (
@@ -186,10 +184,8 @@ const ProductDetails = ({ product, products }) => {
   );
 };
 
-export default ProductDetails;
 
 // ...
-
 export async function getStaticPaths() {
   try {
     const products = await fetchDataFromApi("/api/products?populate=*");
@@ -201,26 +197,22 @@ export async function getStaticPaths() {
 
     return {
       paths,
-      fallback: 'blocking',
+      fallback: true, // Use 'fallback: true' to enable server-side rendering for not-yet-generated pages
     };
   } catch (error) {
-    console.error("Error fetching product paths asdnaslkdnlknasln:", error);
+    console.error("Error fetching product slugs:", error);
     return {
-      paths: [], // Return an empty array in case of an error
-      fallback: 'blocking',
+      paths: [], // Return empty paths array on error
+      fallback: true,
     };
   }
 }
-
-
 
 export async function getStaticProps({ params: { slug } }) {
   try {
     const product = await fetchDataFromApi(
       `/api/products?populate=*&filters[slug][$eq]=${slug}`
     );
-
-    // Add more data fetching logic if needed, e.g., related products
     const products = await fetchDataFromApi(
       `/api/products?populate=*&[filters][slug][$ne]=${slug}`
     );
@@ -240,6 +232,7 @@ export async function getStaticProps({ params: { slug } }) {
   }
 }
 
+export default ProductDetails;
 
 
 
