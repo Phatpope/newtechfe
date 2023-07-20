@@ -193,32 +193,18 @@ import "react-toastify/dist/ReactToastify.css";
 import NewLetterCall from "@/components/NewlatterCall";
 
 const ProductDetails = ({ product }) => {
-  const p = product?.data?.[0]?.attributes;
-  const [selectedSize, setSelectedSize] = React.useState();
-  const [showError, setShowError] = React.useState(false);
-  const dispatch = useDispatch();
-
-  const notify = () => {
-    toast.success("Success. Check your cart!", {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
-  };
+  // Rest of the component code...
 
   if (!product) {
     return <div>Loading...</div>; // Add a loading state
   }
 
   // Add error handling for product not found
-  if (!p) {
+  if (!product?.data?.[0]?.attributes) {
     return <div>Product not found.</div>;
   }
+
+  const p = product.data[0].attributes;
 
   return (
     <div>
@@ -258,47 +244,49 @@ const ProductDetails = ({ product }) => {
 //     };
 //   }
 // }
-export async function getStaticProps() {
-   const product = await fetchDataFromApi(
+export async function getStaticPaths() {
+  const products = await fetchDataFromApi("/api/products?populate=*");
+  const paths = products?.data?.map((p) => ({
+    params: {
+      slug: p?.attributes.slug,
+    },
+  }));
+
+  return {
+    paths,
+    fallback: true, // Set fallback to 'true' or 'blocking' for dynamic generation
+  };
+}
+
+export async function getStaticProps({ params }) {
+  try {
+    const { slug } = params;
+    const product = await fetchDataFromApi(
       `/api/products?populate=*&filters[slug][$eq]=${slug}`
     );
     const products = await fetchDataFromApi(
       `/api/products?populate=*&[filters][slug][$ne]=${slug}`
     );
- 
-  return {
-    props: {
-       product,
+
+    console.log("Product Data:", product); // Add this console.log to check the data
+    console.log("Other Products Data:", products); // Add this console.log to check the data
+
+    return {
+      props: {
+        product,
         products,
-    },
-    // Next.js will attempt to re-generate the page:
-    // - When a request comes in
-    // - At most once every 10 seconds
-    revalidate: 10, // In seconds
+      },
+      revalidate: 10,
+    };
+  } catch (error) {
+    console.error("Error fetching product:", error);
+    return {
+      notFound: true,
+    };
   }
 }
- 
-// This function gets called at build time on server-side.
-// It may be called again, on a serverless function, if
-// the path has not been generated.
-export async function getStaticPaths() {
-  const products = await fetchDataFromApi("/api/products?populate=*");
-  const paths = products?.data?.map((p) => ({
-      params: {
-        slug: p?.attributes.slug,
-      },
-    }));
- 
- 
-  // We'll pre-render only these paths at build time.
-  // { fallback: 'blocking' } will server-render pages
-  // on-demand if the path doesn't exist.
-  return { paths, fallback: 'blocking' }
-}
-
 
 export default ProductDetails;
-
 
 
 
