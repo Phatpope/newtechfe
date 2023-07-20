@@ -184,6 +184,8 @@
 //   );
 // };
 import React from "react";
+import { fetchDataFromApi } from "@/utils/api";
+
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "@/store/cartSlice";
 import { ToastContainer, toast } from "react-toastify";
