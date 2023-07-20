@@ -13,9 +13,10 @@ const ProductCard = ({ data: { attributes: p, id } }) => {
 
   return (
     <Link
-      href={`/product/${p.slug}`}
+      href={`/product/${p.slug}`} key={p.slug} passHref={true}
       className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer"
     >
+      <a>
       <Image
         width={500}
         height={500}
@@ -42,6 +43,7 @@ const ProductCard = ({ data: { attributes: p, id } }) => {
           </p>
         )}
       </div>
+        </a>
     </Link>
   );
 };
