@@ -244,48 +244,51 @@ const ProductDetails = ({ product }) => {
 //     };
 //   }
 // }
-// export async function getStaticPaths() {
-//   const products = await fetchDataFromApi("/api/products?populate=*");
-//   const paths = products?.data?.map((p) => ({
-//     params: {
-//       slug: p?.attributes.slug,
-//     },
-//   }));
-
-//   return {
-//     paths,
-//     fallback: true, // Set fallback to true to enable SSR for new slugs
-//   };
-// }
+export async function getStaticPaths() {
+  const products = await fetchDataFromApi("/api/products?populate=*");
+  const paths = products?.data?.map((p) => ({
+    params: {
+      slug: p?.attributes.slug,
+    },
+  }));
 
 
-// export async function getStaticProps({ params }) {
-//   try {
-//     const { slug } = params;
-//     const product = await fetchDataFromApi(
-//       `/api/products?populate=*&filters[slug][$eq]=${slug}`
-//     );
-//     const products = await fetchDataFromApi(
-//       `/api/products?populate=*&[filters][slug][$ne]=${slug}`
-//     );
+  console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",paths)
 
-//     console.log("Product Data:", product); // Add this console.log to check the data
-//     console.log("Other Products Data:", products); // Add this console.log to check the data
+  return {
+    paths,
+    fallback: true, // Set fallback to true to enable SSR for new slugs
+  };
+}
 
-//     return {
-//       props: {
-//         product,
-//         products,
-//       },
-//       revalidate: 10,
-//     };
-//   } catch (error) {
-//     console.error("Error fetching product:", error);
-//     return {
-//       notFound: true,
-//     };
-//   }
-// }
+
+export async function getStaticProps({ params }) {
+  try {
+    const { slug } = params;
+    const product = await fetchDataFromApi(
+      `/api/products?populate=*&filters[slug][$eq]=${slug}`
+    );
+    const products = await fetchDataFromApi(
+      `/api/products?populate=*&[filters][slug][$ne]=${slug}`
+    );
+
+    console.log("Product Data:", product); // Add this console.log to check the data
+    console.log("Other Products Data:", products); // Add this console.log to check the data
+
+    return {
+      props: {
+        product,
+        products,
+      },
+      revalidate: 10,
+    };
+  } catch (error) {
+    console.error("Error fetching product:", error);
+    return {
+      notFound: true,
+    };
+  }
+}
 
 export default ProductDetails;
 
