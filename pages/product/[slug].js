@@ -189,6 +189,7 @@ const ProductDetails = ({ product, products }) => {
 export async function getStaticPaths() {
   try {
     const products = await fetchDataFromApi("/api/products?populate=*");
+    console.log("Products Data:", products); // Add this console.log to check the data
     const paths = products?.data?.map((p) => ({
       params: {
         slug: p?.attributes.slug,
@@ -197,12 +198,12 @@ export async function getStaticPaths() {
 
     return {
       paths,
-      fallback: true, // Use 'fallback: true' to enable server-side rendering for not-yet-generated pages
+      fallback: true,
     };
   } catch (error) {
     console.error("Error fetching product slugs:", error);
     return {
-      paths: [], // Return empty paths array on error
+      paths: [],
       fallback: true,
     };
   }
@@ -217,20 +218,24 @@ export async function getStaticProps({ params: { slug } }) {
       `/api/products?populate=*&[filters][slug][$ne]=${slug}`
     );
 
+    console.log("Product Data:", product); // Add this console.log to check the data
+    console.log("Other Products Data:", products); // Add this console.log to check the data
+
     return {
       props: {
         product,
         products,
       },
-      revalidate: 10, // Add revalidate option to enable incremental static regeneration
+      revalidate: 10,
     };
   } catch (error) {
     console.error("Error fetching product:", error);
     return {
-      notFound: true, // This will return a 404 page
+      notFound: true,
     };
   }
 }
+
 
 export default ProductDetails;
 
