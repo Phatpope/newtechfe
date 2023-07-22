@@ -12,7 +12,7 @@ const ProductCard = ({ data: { attributes: p, id } }) => {
   const formattedPrice = formatPrice(p.price); // Format the price with separators for thousands
 
   return (
-<Link href={`/product/${p.slug}`}>
+<Link href={`/product/${p.slug}`}
 
       className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer"
     
