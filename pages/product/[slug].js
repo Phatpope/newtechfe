@@ -266,12 +266,16 @@ export async function getStaticProps({ params }) {
     const product = await fetchDataFromApi(
       `/api/products?populate=*&filters[slug][$eq]=${slug}`
     );
+
+    console.log("Product Data:", product); // Check the fetched product data
+
+    if (!product || !product.data || product.data.length === 0) {
+      throw new Error("Product not found."); // Throw an error if product data is invalid or not found
+    }
+
     const products = await fetchDataFromApi(
       `/api/products?populate=*&[filters][slug][$ne]=${slug}`
     );
-
-    console.log("Product Data:", product); // Add this console.log to check the data
-    console.log("Other Products Data:", products); // Add this console.log to check the data
 
     return {
       props: {
@@ -283,10 +287,11 @@ export async function getStaticProps({ params }) {
   } catch (error) {
     console.error("Error fetching product:", error);
     return {
-      notFound: true,
+      notFound: true, // Return a 404 page if there's an error or the product is not found
     };
   }
 }
+
 
 export default ProductDetails;
 
