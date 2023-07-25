@@ -252,14 +252,12 @@ export async function getStaticPaths() {
     },
   }));
 
-
-  console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",paths)
-
   return {
-    paths,
-    fallback: true, // Set fallback to true to enable SSR for new slugs
+    paths: paths || [], // Ensure 'paths' is an array even if it's null
+    fallback: false, // Set to false to return 404 for undefined paths
   };
 }
+
 
 
 export async function getStaticProps({ params }) {
