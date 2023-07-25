@@ -174,7 +174,7 @@ const ProductDetails = ({ product, products }) => {
           {/* right column end */}
         </div>
         <div className="text-[18px] font-semibold mb-2 leading-tight"></div>
-        <div className="bg-white flex justify-center items-center h-1/4  py-40">
+        <div className="bg-white flex justify-center items-center h-1/4  py-10">
           <Navigation  product={p}/>
         </div>
 
