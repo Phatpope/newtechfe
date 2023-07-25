@@ -30,14 +30,14 @@ const ProductCard = ({ data: { attributes: p, id } }) => {
           </p>
 
           {p.original_price && (
-            <p className="text-sm font-tektur line-through text-gray-500">
+            <p className="text-sm font-tektur line-through text-gray-400">
               {formatPrice(p.original_price)}₫
             </p>
           )}
         </div>
 
         {p.original_price && (
-          <p className="mt-2 text-sm font-tektur text-green-500">
+          <p className="mt-2 text-xs font-tektur text-green-300">
             {getDiscountedPricePercentage(p.original_price, p.price)}% off
           </p>
         )}
