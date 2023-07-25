@@ -244,19 +244,19 @@ export async function getStaticPaths() {
     };
   }
 }
-export async function getStaticPaths() {
-  const products = await fetchDataFromApi("/api/products?populate=*");
-  const paths = products?.data?.map((p) => ({
-    params: {
-      slug: p?.attributes.slug,
-    },
-  }));
+// export async function getStaticPaths() {
+//   const products = await fetchDataFromApi("/api/products?populate=*");
+//   const paths = products?.data?.map((p) => ({
+//     params: {
+//       slug: p?.attributes.slug,
+//     },
+//   }));
 
-  return {
-    paths: paths || [], // Ensure 'paths' is an array even if it's null
-    fallback: false, // Set to false to return 404 for undefined paths
-  };
-}
+// return {
+//   paths: [],
+//   fallback: true,
+// };
+// }
 
 
 
