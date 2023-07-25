@@ -44,7 +44,7 @@ const Navigation = ({ product }) => {
     <div>
       <div className="text-lg font-tektur mb-5">Product Information:</div>
       <div className="markdown text-md mb-5 font-tektur ui-sans-serif">
-        <ReactMarkdown>{product.info}</ReactMarkdown>
+        <ReactMarkdown className=" text-md mb-5 font-tektur ui-sans-serif" >{product.info}</ReactMarkdown>
       </div>
     </div>
   );
