@@ -88,7 +88,7 @@ const Navigation = ({ product }) => {
 
   return (
     <div className="bg-white h-18 rounded-full px-4">
-      <ul className="flex relative justify-center items-center h-1/4 py-40">
+      <ul className="flex relative justify-center items-center h-1/4 py-10">
         {Menus.map((menu, i) => (
           <li key={i} className="w-30">
             <a
