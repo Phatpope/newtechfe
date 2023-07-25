@@ -222,28 +222,28 @@ const ProductDetails = ({ product, products }) => {
 
 
 // ...
-// export async function getStaticPaths() {
-//   try {
-//     const products = await fetchDataFromApi("/api/products?populate=*");
-//     console.log("Products Data:", products); // Add this console.log to check the data
-//     const paths = products?.data?.map((p) => ({
-//       params: {
-//         slug: p?.attributes.slug,
-//       },
-//     }));
+export async function getStaticPaths() {
+  try {
+    const products = await fetchDataFromApi("/api/products?populate=*");
+    console.log("Products Data:", products); // Add this console.log to check the data
+    const paths = products?.data?.map((p) => ({
+      params: {
+        slug: p?.attributes.slug,
+      },
+    }));
 
-//     return {
-//       paths,
-//       fallback: true,
-//     };
-//   } catch (error) {
-//     console.error("Error fetching product slugs:", error);
-//     return {
-//       paths: [],
-//       fallback: true,
-//     };
-//   }
-// }
+    return {
+      paths,
+      fallback: true,
+    };
+  } catch (error) {
+    console.error("Error fetching product slugs:", error);
+    return {
+      paths: [],
+      fallback: true,
+    };
+  }
+}
 export async function getStaticPaths() {
   const products = await fetchDataFromApi("/api/products?populate=*");
   const paths = products?.data?.map((p) => ({
