@@ -54,11 +54,11 @@ const Navigation = ({ product }) => {
 
       <div className="w-full md:w-auto flex-[1.5] max-w-[500px]  lg:max-w-full mx-auto lg:mx-0">
   <div className="image-carousel-container">
-    <ImageCarousel images={product?.imageinfo1?.data} text1={product.textinfo1} text2={product.textinfo2} text3={product.text3} text4={product.text4} />
+    <ImageCarousel images={product?.imageinfo1?.data} text1={product?.textinfo1} text2={product?.textinfo2} text3={product?.text3} text4={product?.text4} />
   </div>
 
   <div className="markdown text-md mb-5">
-        <ReactMarkdown>{product.textinfo2}</ReactMarkdown>
+        <ReactMarkdown>{product?.textinfo2}</ReactMarkdown>
       </div>
       
 
