@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import { fetchDataFromApi } from "@/utils/api";
+import Image from "next/image";
+import ProductDetailsCarousel from "./ProductDetailsCarousel";
+import ImageCarousel from "./ImageCarousel";
+
 
 
 const formatKey = (key) => {
@@ -43,9 +47,26 @@ const Navigation = ({ product }) => {
   const infoContent = (
     <div>
       <div className="text-lg font-tektur mb-5">Product Information:</div>
-      <div className="markdown text-sm mb-4 font-tektur ui-sans-serif">
-        <ReactMarkdown className=" text-md mb-5 font-tektur ui-sans-serif" >{product.info}</ReactMarkdown>
+      <div className="markdown text-md mb-5">
+        <ReactMarkdown>{product.info}</ReactMarkdown>
+        
       </div>
+
+      <div className="w-full md:w-auto flex-[1.5] max-w-[500px]  lg:max-w-full mx-auto lg:mx-0">
+  <div className="image-carousel-container">
+    <ImageCarousel images={product?.imageinfo1?.data} text1={product.textinfo1} text2={product.textinfo2} text3={product.text3} text4={product.text4} />
+  </div>
+
+  <div className="markdown text-md mb-5">
+        <ReactMarkdown>{product.textinfo2}</ReactMarkdown>
+      </div>
+      
+
+
+
+</div>
+
+
     </div>
   );
 
@@ -88,7 +109,7 @@ const Navigation = ({ product }) => {
 
   return (
     <div className="bg-white h-18 rounded-full px-4">
-      <ul className="flex relative justify-center items-center h-1/4 py-10">
+      <ul className="flex relative justify-center items-center h-1/4 py-40">
         {Menus.map((menu, i) => (
           <li key={i} className="w-30">
             <a
