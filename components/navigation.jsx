@@ -47,10 +47,7 @@ const Navigation = ({ product }) => {
   const infoContent = (
     <div>
       <div className="text-lg font-tektur mb-5">Product Information:</div>
-      <div className="markdown text-md mb-5">
-        <ReactMarkdown>{product.info}</ReactMarkdown>
-        
-      </div>
+      
 
       <div className="w-full md:w-auto flex-[1.5] max-w-[500px]  lg:max-w-full mx-auto lg:mx-0">
   <div className="image-carousel-container">
