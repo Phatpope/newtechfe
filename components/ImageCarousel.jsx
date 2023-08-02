@@ -25,7 +25,7 @@ const ImageCarousel = ({ images,text1,text2,text3,text4 }) => {
       <div
         class="ripple relative overflow-hidden rounded-lg bg-cover bg-[50%] bg-no-repeat shadow-lg dark:shadow-black/20"
         data-te-ripple-init data-te-ripple-color="light">
-        <img  src={images[0].attributes.url} class="w-full" alt={images[0]?.attributes.name} />
+        <img  src={images?.[0].attributes.url} class="w-full" alt={images?.[0]?.attributes.name} />
         <a href="#!">
           <div
             class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsl(0,0%,98.4%,0.2)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
@@ -67,7 +67,7 @@ const ImageCarousel = ({ images,text1,text2,text3,text4 }) => {
       <div
         class="ripple relative overflow-hidden rounded-lg bg-cover bg-[50%] bg-no-repeat shadow-lg dark:shadow-black/20"
         data-te-ripple-init data-te-ripple-color="light">
-        <img  src={images[0].attributes.url} class="w-full" alt={images[0]?.attributes.name} />
+        <img  src={images?.[0].attributes.url} class="w-full" alt={images?.[0]?.attributes.name} />
         <a href="#!">
           <div
             class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsl(0,0%,98.4%,0.2)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
@@ -101,7 +101,7 @@ const ImageCarousel = ({ images,text1,text2,text3,text4 }) => {
       <div
         class="ripple relative overflow-hidden rounded-lg bg-cover bg-[50%] bg-no-repeat shadow-lg dark:shadow-black/20"
         data-te-ripple-init data-te-ripple-color="light">
-        <img  src={images[1].attributes.url} class="w-full" alt={images[0]?.attributes.name} />
+        <img  src={images?.[1].attributes.url} class="w-full" alt={images?.[0]?.attributes.name} />
         <a href="#!">
           <div
             class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsl(0,0%,98.4%,0.2)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
@@ -135,7 +135,7 @@ const ImageCarousel = ({ images,text1,text2,text3,text4 }) => {
     <div class="flex flex-wrap">
       <div class="mb-12 w-full shrink-0 grow-0 basis-auto lg:mb-0 lg:w-5/12">
         <div class="flex lg:py-12">
-          <img src={images[1].attributes.url}
+          <img src={images?.[1].attributes.url}
             class="z-[10] w-full rounded-lg shadow-lg dark:shadow-black/20 lg:ml-[50px]" alt="image" />
         </div>
       </div>
