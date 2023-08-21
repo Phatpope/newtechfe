@@ -47,15 +47,18 @@ const Navigation = ({ product }) => {
   const infoContent = (
     <div>
       <div className="text-lg font-tektur mb-5">Product Information:</div>
-      
+      <div className="markdown text-md mb-5">
+        <ReactMarkdown>{product.info}</ReactMarkdown>
+        
+      </div>
 
       <div className="w-full md:w-auto flex-[1.5] max-w-[500px]  lg:max-w-full mx-auto lg:mx-0">
   <div className="image-carousel-container">
-    <ImageCarousel images={product?.imageinfo1?.data} text1={product?.textinfo1} text2={product?.textinfo2} text3={product?.text3} text4={product?.text4} />
+    <ImageCarousel images={product?.imageinfo1?.data} text1={product.textinfo1} text2={product.textinfo2} text3={product.text3} text4={product.text4} />
   </div>
 
   <div className="markdown text-md mb-5">
-        <ReactMarkdown>{product?.textinfo2}</ReactMarkdown>
+        <ReactMarkdown>{product.textinfo2}</ReactMarkdown>
       </div>
       
 
@@ -71,7 +74,7 @@ const Navigation = ({ product }) => {
     <div>
       <div className="text-lg font-tektur mb-5">Product Video:</div>
 
-      <iframe
+      <iframe 
         width="560"
         height="315"
         src={product.video}
