@@ -49,9 +49,7 @@ const ImageCarousel = ({ images,text1,text2,text3,text4 }) => {
         <a href="#!">Lisa McCartney</a>
       </p>
       <p class="mb-6 text-neutral-500 dark:text-neutral-300">
-        Ut pretium ultricies dignissim. Sed sit amet mi eget urna placerat
-        vulputate. Ut vulputate est non quam dignissim elementum. Donec a
-        ullamcorper diam.
+      {text1}
       </p>
       <p class="text-neutral-500 dark:text-neutral-300">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea quae
@@ -84,10 +82,10 @@ const ImageCarousel = ({ images,text1,text2,text3,text4 }) => {
           <path stroke-linecap="round" stroke-linejoin="round"
             d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
         </svg>
-        Art
+        {text1}
       </div>
       <p class="mb-6 text-sm text-neutral-500 dark:text-neutral-400">
-        Published <u>12.01.2022</u> by
+      {text1}
         <a href="#!">Anna Doe</a>
       </p>
       <p class="text-neutral-500 dark:text-neutral-300">
@@ -146,10 +144,7 @@ const ImageCarousel = ({ images,text1,text2,text3,text4 }) => {
           <div class="lg:pl-12">
             <h2 class="mb-8 text-3xl font-bold">Let it surprise you</h2>
             <p class="mb-8 pb-2 lg:pb-0">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Maxime, sint, repellat vel quo quisquam accusamus in qui at
-              ipsa enim quibusdam illo laboriosam omnis. Labore itaque illum
-              distinctio eum neque!
+            {text1}
             </p>
 
             <div class="mx-auto mb-8 flex flex-col md:flex-row md:justify-around xl:justify-start">
@@ -159,7 +154,7 @@ const ImageCarousel = ({ images,text1,text2,text3,text4 }) => {
                   <path stroke-linecap="round" stroke-linejoin="round"
                     d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                Best team
+                {text1}
               </p>
 
               <p class="mx-auto mb-4 flex items-center md:mx-0 md:mb-2 lg:mb-0 xl:mr-20">
@@ -168,7 +163,7 @@ const ImageCarousel = ({ images,text1,text2,text3,text4 }) => {
                   <path stroke-linecap="round" stroke-linejoin="round"
                     d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                Best quality
+                {text1}
               </p>
 
               <p class="mx-auto mb-2 flex items-center md:mx-0 lg:mb-0">
