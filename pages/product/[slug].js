@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
+
 import { IoMdHeartEmpty } from "react-icons/io";
 import Wrapper from "@/components/Wrapper";
 import ProductDetailsCarousel from "@/components/ProductDetailsCarousel";
@@ -15,6 +17,8 @@ import "react-toastify/dist/ReactToastify.css";
 import NewLetterCall from "@/components/NewlatterCall";
 
 const ProductDetails = ({ product, products }) => {
+  const router = useRouter();
+
   const [selectedSize, setSelectedSize] = useState();
   const [showError, setShowError] = useState(false);
   const dispatch = useDispatch();
@@ -32,14 +36,12 @@ const ProductDetails = ({ product, products }) => {
       theme: "dark",
     });
   };
-
-  if (!product) {
-    return <div>Loading...</div>; // Add a loading state
+  if (router.isFallback) {
+    return <div>Loading...</div>;
   }
 
-  // Add error handling for product not found
   if (!p) {
-    return <div>Product not found.</div>;
+    return <div>Loading...</div>;
   }
 
   return (
@@ -48,7 +50,7 @@ const ProductDetails = ({ product, products }) => {
       <Wrapper>
         <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px]">
           {/* left column start */}
-          <div className="w-full md:w-auto flex-[1.5] max-w-[500px] lg:max-w-full mx-auto lg:mx-0 h-96 lg:h-auto">
+          <div className="w-full md:w-auto flex-[1.5] max-w-[500px] lg:max-w-full mx-auto lg:mx-0">
             <ProductDetailsCarousel images={p?.image?.data} />
           </div>
           {/* left column end */}
@@ -173,7 +175,8 @@ const ProductDetails = ({ product, products }) => {
           </div>
           {/* right column end */}
         </div>
-        <div className="bg-white flex justify-center items-center h-1/4  py-8">
+        <div className="text-[18px] font-semibold mb-2 leading-tight"></div>
+        <div className="bg-white flex justify-center items-center h-1/4  py-40">
           <Navigation  product={p}/>
         </div>
 
@@ -182,118 +185,69 @@ const ProductDetails = ({ product, products }) => {
     </div>
   );
 };
-// import React from "react";
-// import { fetchDataFromApi } from "@/utils/api";
-
-// import { useSelector, useDispatch } from "react-redux";
-// import { addToCart } from "@/store/cartSlice";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
-// import NewLetterCall from "@/components/NewlatterCall";
-
-// const ProductDetails = ({ product }) => {
-//   // Rest of the component code...
-
-//   if (!product) {
-//     return <div>Loading...</div>; // Add a loading state
-//   }
-
-//   // Add error handling for product not found
-//   if (!product?.data?.[0]?.attributes) {
-//     return <div>Product not found.</div>;
-//   }
-
-//   const p = product.data[0].attributes;
-
-//   return (
-//     <div>
-//       <ToastContainer />
-//       <div>
-//         {/* PRODUCT TITLE */}
-//         <div>{p.name}</div>
-
-//         {/* PRODUCT PRICE */}
-//         <div>Giá : {p.price} &#8363;</div>
-//       </div>
-//     </div>
-//   );
-// };
-
-
-// ...
-export async function getStaticPaths() {
-  try {
-    const products = await fetchDataFromApi("/api/products?populate=*");
-    console.log("Products Data:", products); // Add this console.log to check the data
-    const paths = products?.data?.map((p) => ({
-      params: {
-        slug: p?.attributes.slug,
-      },
-    }));
-
-    return {
-      paths,
-      fallback: true,
-    };
-  } catch (error) {
-    console.error("Error fetching product slugs:", error);
-    return {
-      paths: [],
-      fallback: true,
-    };
-  }
-}
-// export async function getStaticPaths() {
-//   const products = await fetchDataFromApi("/api/products?populate=*");
-//   const paths = products?.data?.map((p) => ({
-//     params: {
-//       slug: p?.attributes.slug,
-//     },
-//   }));
-
-// return {
-//   paths: [],
-//   fallback: true,
-// };
-// }
-
-
-
-export async function getStaticProps({ params }) {
-  try {
-    const { slug } = params;
-    const product = await fetchDataFromApi(
-      `/api/products?populate=*&filters[slug][$eq]=${slug}`
-    );
-
-    console.log("Product Data:", product); // Check the fetched product data
-
-    if (!product || !product.data || product.data.length === 0) {
-      throw new Error("Product not found."); // Throw an error if product data is invalid or not found
-    }
-
-    const products = await fetchDataFromApi(
-      `/api/products?populate=*&[filters][slug][$ne]=${slug}`
-    );
-
-    return {
-      props: {
-        product,
-        products,
-      },
-      revalidate: 10,
-    };
-  } catch (error) {
-    console.error("Error fetching product:", error);
-    return {
-      notFound: true, // Return a 404 page if there's an error or the product is not found
-    };
-  }
-}
-
 
 export default ProductDetails;
 
+// ...
+
+export async function getStaticPaths() {
+  const products = await fetchDataFromApi("/api/products?populate=*");
+  const paths = products?.data?.map((p) => ({
+    params: {
+      slug: p?.attributes.slug,
+    },
+  }));
+
+  return {
+    paths,
+    fallback: true,
+  };
+}
+
+export async function getStaticProps({ params: { slug } }) {
+  const product = await fetchDataFromApi(
+    `/api/products?populate=*&filters[slug][$eq]=${slug}`
+  );
+  const products = await fetchDataFromApi(
+    `/api/products?populate=*&[filters][slug][$ne]=${slug}`
+  );
+
+  return {
+    props: {
+      product,
+      products,
+    },
+    revalidate: 10, // Add revalidate option to enable incremental static regeneration
+  };
+}
+// export async function getStaticProps({ params }) {
+//   try {
+//     const { slug } = params;
+//     const product = await fetchDataFromApi(
+//       `/api/products?populate=*&filters[slug][$eq]=${slug}`
+//     );
+//     const products = await fetchDataFromApi(
+//       `/api/products?populate=*&[filters][slug][$ne]=${slug}`
+//     );
+
+//     console.log("Product Data:", product); // Add this console.log to check the data
+//     console.log("Other Products Data:", products); // Add this console.log to check the data
+
+//     return {
+//       props: {
+//         product,
+//         products,
+//       },
+//       revalidate: 10,
+//     };
+//   } catch (error) {
+//     console.error("Error fetching product:", error);
+//     return {
+//       notFound: true,
+//       notFound: true, // Return a 404 page if there's an error or the product is not found
+//     };
+//   }
+// }
 
 
 
